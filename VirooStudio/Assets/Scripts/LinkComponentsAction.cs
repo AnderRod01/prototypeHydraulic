@@ -14,31 +14,34 @@ namespace VirooLab.Actions
         [SerializeField]
         private Color newColor = default;
 
-        private bool isSelected = false;
+
 
         [SerializeField] 
         private ComponentScriptableObject componentSO = default;
         
+        [SerializeField] 
+        private ComponentController component;
+        
+        
+        
         
         protected override void LocalExecuteImplementation(string data)
         {
-            changeColorIfSelected();
-            
-            
-            
+            ChangeColorIfSelected();
+            component.MarkAsSelected();
         }
 
-        private void changeColorIfSelected()
+        private void ChangeColorIfSelected()
         {
-            if (!isSelected)
+            if (!component.isSelected)
             {
                 cubeRenderer.material.color = newColor;
-                isSelected = true;
+                Debug.Log("Selected!");
                 return;
             }
-
-            isSelected = false;
+            
             cubeRenderer.material.color = color;
+            Debug.Log("Deselected!");
 
         }
     }
