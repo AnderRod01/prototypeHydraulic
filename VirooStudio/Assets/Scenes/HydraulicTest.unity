@@ -584,9 +584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbb371cd5ea3504e8097e023a09c7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 0}
-  - {fileID: 0}
+  actions: []
   executeInPlatforms: -1
   highlightCursor: 1
 --- !u!114 &511609160
@@ -601,9 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360e3ce234d9469498f13c24e69c7527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 0}
-  - {fileID: 0}
+  actions: []
   config: {fileID: 511609161}
   triggerActionType: 1
 --- !u!114 &511609161
@@ -1836,6 +1832,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 829e79abc4190ef43af1998e7d0cee57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 5888854b-eb7d-4234-bfba-5c1fb7db3408
+  textId: Check if Correct
+  startsEnabled: 1
+  shouldPersist: 0
+  gameController: {fileID: 1438569507}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

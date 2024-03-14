@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,13 +9,18 @@ public class ComponentController : MonoBehaviour
     public bool isSelected;
 
     public string linkedWith;
-
+    public string componentName;
+    
     [SerializeField] 
     private ComponentScriptableObject componentSO;
     
     [SerializeField]
     private GameController gameController;
 
+    private void Start()
+    {
+        componentName = componentSO.componentName;
+    }
 
     public void MarkAsSelected(){
         

@@ -13,11 +13,6 @@ namespace VirooLab.Actions
         
         [SerializeField]
         private Color newColor = default;
-
-
-
-        [SerializeField] 
-        private ComponentScriptableObject componentSO = default;
         
         [SerializeField] 
         private ComponentController component;
