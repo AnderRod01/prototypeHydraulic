@@ -1,49 +1,34 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using gameControllerNamespace;
+using Unity.VisualScripting.Community.Libraries.Humility;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
+using Virtualware.Networking.Client;
+using Random = UnityEngine.Random;
 
 public class ComponentController : MonoBehaviour
 {
-    
-    public bool isSelected;
 
-    public string linkedWith;
+    public string linkedWith = "";
     public string componentName;
     
-    [SerializeField] 
-    private ComponentScriptableObject componentSO;
+    [SerializeField] public ComponentScriptableObject componentSO;
     
     [SerializeField]
     private GameController gameController;
 
+    public Color originalColor;
+
+    private XRSocketInteractor socket;
     private void Start()
     {
         componentName = componentSO.componentName;
+        socket = GetComponent<XRSocketInteractor>();
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        //NetworkObject.GenerateRandomId(SceneManager.GetActiveScene());
     }
-
-    public void MarkAsSelected(){
-        
-        
-        if(isSelected){
-           isSelected = false;
-           gameController.selectedComponent = "";
-           return; 
-        }
-        
-        if(gameController.selectedComponent != ""){
-            GameObject otherComponent = GameObject.Find(gameController.selectedComponent);
-            otherComponent.GetComponent<ComponentController>().linkedWith = componentSO.componentName;
-            linkedWith = otherComponent.GetComponent<ComponentController>().componentSO.componentName;
-
-            isSelected = false;
-            gameController.selectedComponent = "";
-            
-            Debug.Log(linkedWith + " linked with " + otherComponent.GetComponent<ComponentController>().linkedWith);
-            return;
-        }
-        
-        isSelected = true;
-        gameController.selectedComponent = componentSO.componentName;
-    }
+    
 }

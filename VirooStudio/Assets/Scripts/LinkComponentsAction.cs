@@ -1,43 +1,33 @@
+using DefaultNamespace;
+using gameControllerNamespace;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 using Viroo.Interactions;
+using Viroo.UI;
 
 namespace VirooLab.Actions
 {
     public class LinkComponent : BroadcastObjectAction
     {
-        [SerializeField]
-        private Renderer cubeRenderer = default;
 
-        [SerializeField]
-        private Color color = default;
+        [SerializeField] private InOutController input;
         
-        [SerializeField]
-        private Color newColor = default;
-        
-        [SerializeField] 
-        private ComponentController component;
-        
-        
-        
-        
+        protected override void OnInject()
+        {
+
+            string uniqueID = GameObject.Find("GameController").GetComponent<GameController>().GetUniqueId(); //Consultar un script o servicio que nos proporcione un id único y que sea el mismo en todas las instancias.
+
+            System.Reflection.FieldInfo prop = typeof(ObjectAction).GetField("id", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            prop.SetValue(this, uniqueID);
+
+            base.OnInject();
+        }
+
         protected override void LocalExecuteImplementation(string data)
         {
-            ChangeColorIfSelected();
-            component.MarkAsSelected();
+            //Debug.Log("Selecciono");
+            input.MarkAsSelected(data);
         }
-
-        private void ChangeColorIfSelected()
-        {
-            if (!component.isSelected)
-            {
-                cubeRenderer.material.color = newColor;
-                Debug.Log("Selected!");
-                return;
-            }
-            
-            cubeRenderer.material.color = color;
-            Debug.Log("Deselected!");
-
-        }
+        
     }
 }
