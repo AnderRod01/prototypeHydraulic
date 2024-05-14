@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using gameControllerNamespace;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +15,6 @@ namespace DefaultNamespace
         [SerializeField]
         private GameController gameController;
         
-
         public ComponentController component;
         
         public string linkedWith = "";
@@ -22,9 +22,6 @@ namespace DefaultNamespace
         
         public Color originalColor;
         
-
-
-
         private void Start()
         {
             gameController = GameObject.Find("GameController").GetComponent<GameController>();
@@ -37,7 +34,7 @@ namespace DefaultNamespace
             
             GameObject otherInput = GameObject.Find(gameController.selectedComponent + "/Entradas/" + gameController.selectedInput);
             //GameObject otherInput = GameObject.Find(gameController.selectedInput);
-
+            
             if (!gameController.players.TryGetValue(data, out GameObject[] selectedInputs))
             {
                 gameController.players.Add(data, new GameObject[]{this.gameObject, null});
@@ -81,10 +78,11 @@ namespace DefaultNamespace
             
             //Link de 2 entradas
             if(gameController.selectedInput != ""){
+                Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 linkedWith = otherComponent.GetComponent<ComponentController>().componentSO.componentName;
                 linkedWithIn = otherInput.name;
 
-                otherInput.GetComponent<InOutController>().linkedWith = component.name;
+                otherInput.GetComponent<InOutController>().linkedWith = component.componentName;
                 otherInput.GetComponent<InOutController>().linkedWithIn = name;
 
                 isSelected = false;
@@ -103,7 +101,8 @@ namespace DefaultNamespace
                 //otherInput.transform.GetChild(0).GetComponent<MeshRenderer>().transform.localScale -= new Vector3(0.3f, 0.3f, 0.3f);
                 gameController.DrawLine(transform, otherInput.transform); 
                 
-                
+                Debug.Log(component.componentName + " linkedWith " + linkedWith );
+                Debug.Log(name + " linkedWithIn " + linkedWithIn);
                 return;
             }
             
@@ -113,8 +112,25 @@ namespace DefaultNamespace
             gameController.selectedInput = name;
 
 
+
+            StartCoroutine(UnselectTimer());
         }
-        
+
+        private IEnumerator UnselectTimer()
+        {
+            if (isSelected)
+            {
+                Debug.Log("preparo para desvincular");
+                yield return new WaitForSeconds(10f);
+            
+                isSelected = false;
+                gameController.selectedComponent = "";
+                gameController.selectedInput = "";
+            
+                Debug.Log("desvinculado");
+
+            }
+        }
         
     }
     

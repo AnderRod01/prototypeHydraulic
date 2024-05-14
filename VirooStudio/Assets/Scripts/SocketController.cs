@@ -11,22 +11,22 @@ public class SocketController : MonoBehaviour
     private XRBaseInteractable attachedObject;
     void Start()
     {
-        socket = GetComponent<XRSocketInteractor>();
-        socket.selectEntered.AddListener(EnterSnap);
-        socket.selectExited.AddListener(ExitSnap);
+        //socket = GetComponent<XRSocketInteractor>();
+        //socket.selectEntered.AddListener(EnterSnap);
+        //socket.selectExited.AddListener(ExitSnap);
     }
     
     public void EnterSnap(SelectEnterEventArgs args)
     {
         attachedObject = args.interactable;
-        Debug.Log("Objeto enganchado: " + attachedObject.gameObject.name);
+        //Debug.Log("Objeto enganchado: " + attachedObject.gameObject.name);
         BoxCollider[] colliders = attachedObject.GetComponentsInChildren<BoxCollider>();
 
         for (int i = 1; i < colliders.Length; i++)
         {
             BoxCollider collider = colliders[i];
             collider.enabled = true;
-            Debug.Log(collider.gameObject.name);
+            //Debug.Log(collider.gameObject.name);
         }
 
 
@@ -44,7 +44,7 @@ public class SocketController : MonoBehaviour
         {
             BoxCollider collider = colliders[i];
             collider.enabled = false;
-            Debug.Log(collider.gameObject.name);
+            //Debug.Log(collider.gameObject.name);
         }
     }
 }

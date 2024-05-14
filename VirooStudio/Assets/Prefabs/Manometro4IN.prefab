@@ -1080,8 +1080,8 @@ GameObject:
   - component: {fileID: 5808385146615295129}
   - component: {fileID: 5019340726570444765}
   - component: {fileID: 7812361042933211288}
-  - component: {fileID: 7427036597860925197}
-  - component: {fileID: 4938925012966873562}
+  - component: {fileID: 2883917307959138061}
+  - component: {fileID: 1402366483903839455}
   m_Layer: 6
   m_Name: Entrada_P
   m_TagString: Finish
@@ -1160,10 +1160,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 6535985931846781316}
+  - {fileID: 1402366483903839455}
   executeInPlatforms: -1
   highlightCursor: 1
---- !u!114 &7427036597860925197
+--- !u!114 &2883917307959138061
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1172,14 +1172,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2437886497443451365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360e3ce234d9469498f13c24e69c7527, type: 3}
+  m_Script: {fileID: 11500000, guid: d235c7a4769898a4a88aa2f2a785703c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 6535985931846781316}
-  config: {fileID: 4938925012966873562}
-  triggerActionType: 1
---- !u!114 &4938925012966873562
+  action: {fileID: 6535985931846781316}
+--- !u!114 &1402366483903839455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1188,12 +1185,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 2437886497443451365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8172c7a958d7fd419288b5098e90fbb, type: 3}
+  m_Script: {fileID: 11500000, guid: c28a303f5aff5294cac2b96b90a22f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  validTriggerSources:
-  - RightHand
-  - LeftHand
+  id: befa2e0d-9543-4d85-8fb7-49c6a8a83ffd
+  textId: 
+  startsEnabled: 1
+  delay: 0
+  exposedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2883917307959138061}
+        m_TargetAssemblyTypeName: GetInteractorPlayer, TestAssemblyDefinition
+        m_MethodName: ExecuteActionProxy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2941880853482231917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,10 +1966,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3672698618497586383}
   - component: {fileID: 8152001853885162447}
-  - component: {fileID: 3626119322961285172}
-  - component: {fileID: 7450858625814936283}
   - component: {fileID: 5480142079090950392}
   - component: {fileID: 3663373326280327952}
+  - component: {fileID: 1431023450627047542}
+  - component: {fileID: 3860428505118509996}
   m_Layer: 6
   m_Name: Entrada_T
   m_TagString: Finish
@@ -2004,37 +2017,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.122102916, y: 0.21101019, z: 0.13665639}
   m_Center: {x: 0.0013505224, y: 0.018076275, z: -0.009550204}
---- !u!114 &3626119322961285172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4016997148941900270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360e3ce234d9469498f13c24e69c7527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 1087773601846475044}
-  config: {fileID: 7450858625814936283}
-  triggerActionType: 1
---- !u!114 &7450858625814936283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4016997148941900270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8172c7a958d7fd419288b5098e90fbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  validTriggerSources:
-  - RightHand
-  - LeftHand
 --- !u!114 &5480142079090950392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2069,6 +2051,50 @@ MonoBehaviour:
   linkedWith: 
   linkedWithIn: 
   originalColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1431023450627047542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4016997148941900270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28a303f5aff5294cac2b96b90a22f62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 5efd6231-43e1-4296-88c1-49e306af4159
+  textId: 
+  startsEnabled: 1
+  delay: 0
+  exposedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3860428505118509996}
+        m_TargetAssemblyTypeName: GetInteractorPlayer, TestAssemblyDefinition
+        m_MethodName: ExecuteActionProxy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3860428505118509996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4016997148941900270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d235c7a4769898a4a88aa2f2a785703c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 1087773601846475044}
 --- !u!1 &4076498842894567425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,6 +2771,8 @@ GameObject:
   - component: {fileID: 4088805639216099878}
   - component: {fileID: 830788135954189336}
   - component: {fileID: 5811276907698717484}
+  - component: {fileID: 6816441326015756239}
+  - component: {fileID: 6917486924914647288}
   m_Layer: 6
   m_Name: Entrada_A
   m_TagString: Finish
@@ -2817,15 +2845,59 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4910798868183685857}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8dbb371cd5ea3504e8097e023a09c7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 6642124516618812470}
+  - {fileID: 6816441326015756239}
   executeInPlatforms: -1
   highlightCursor: 1
+--- !u!114 &6816441326015756239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4910798868183685857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28a303f5aff5294cac2b96b90a22f62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: af02759d-3b21-4cd6-b31f-cb06ab950511
+  textId: 
+  startsEnabled: 1
+  delay: 0
+  exposedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6917486924914647288}
+        m_TargetAssemblyTypeName: GetInteractorPlayer, TestAssemblyDefinition
+        m_MethodName: ExecuteActionProxy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6917486924914647288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4910798868183685857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d235c7a4769898a4a88aa2f2a785703c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 6642124516618812470}
 --- !u!1 &4958186817759547690
 GameObject:
   m_ObjectHideFlags: 0
@@ -3087,6 +3159,8 @@ GameObject:
   - component: {fileID: 8997626170968530340}
   - component: {fileID: 7660386611063853759}
   - component: {fileID: 3178134365098492501}
+  - component: {fileID: 2997393452254913477}
+  - component: {fileID: 7219051085363175787}
   m_Layer: 6
   m_Name: Entrada_B
   m_TagString: Finish
@@ -3126,7 +3200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 5658942237159023561}
+  - {fileID: 2997393452254913477}
   executeInPlatforms: -1
   highlightCursor: 1
 --- !u!65 &7660386611063853759
@@ -3168,6 +3242,50 @@ MonoBehaviour:
   linkedWith: 
   linkedWithIn: 
   originalColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &2997393452254913477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5825099894436810373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28a303f5aff5294cac2b96b90a22f62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 06d9c268-8630-4d70-940e-6aa6a8ea63ed
+  textId: 
+  startsEnabled: 1
+  delay: 0
+  exposedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7219051085363175787}
+        m_TargetAssemblyTypeName: GetInteractorPlayer, TestAssemblyDefinition
+        m_MethodName: ExecuteActionProxy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7219051085363175787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5825099894436810373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d235c7a4769898a4a88aa2f2a785703c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: {fileID: 5658942237159023561}
 --- !u!1 &5931993643932576850
 GameObject:
   m_ObjectHideFlags: 0
@@ -4163,8 +4281,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8566819128773413500}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -6.173, y: 1.778, z: 1.518}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4173,8 +4291,9 @@ Transform:
   - {fileID: 32823422109468379}
   - {fileID: 2398196478938379909}
   - {fileID: 65019267229763102}
+  - {fileID: 3908967748290945156}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7288310196459306082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4713,3 +4832,82 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &3581989022406952815
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5791037557725610664}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 312deca59ea0ed845b78e6a8ecd5787f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 312deca59ea0ed845b78e6a8ecd5787f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 312deca59ea0ed845b78e6a8ecd5787f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 312deca59ea0ed845b78e6a8ecd5787f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 312deca59ea0ed845b78e6a8ecd5787f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 312deca59ea0ed845b78e6a8ecd5787f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 312deca59ea0ed845b78e6a8ecd5787f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 312deca59ea0ed845b78e6a8ecd5787f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 312deca59ea0ed845b78e6a8ecd5787f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 312deca59ea0ed845b78e6a8ecd5787f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 312deca59ea0ed845b78e6a8ecd5787f,
+        type: 3}
+      propertyPath: m_Name
+      value: Placa_repartidora_con_manometro 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 312deca59ea0ed845b78e6a8ecd5787f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 312deca59ea0ed845b78e6a8ecd5787f, type: 3}
+--- !u!4 &3908967748290945156 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 312deca59ea0ed845b78e6a8ecd5787f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3581989022406952815}
+  m_PrefabAsset: {fileID: 0}

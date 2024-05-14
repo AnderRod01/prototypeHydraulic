@@ -23,7 +23,7 @@ namespace gameControllerNamespace
     
         public GameObject[] availableComponents;
     
-        public Dictionary<string, string> solution = new Dictionary<string, string>();
+        public List<string[]> solution = new List<string[]>();
     
         [SerializeField] private GameObject canvasCorrect;
         [SerializeField] private GameObject canvasIncorrect;
@@ -31,7 +31,7 @@ namespace gameControllerNamespace
         [SerializeField] private Color c1, c2;
 
         public GameObject lineSpawner;
-        [SerializeField] private int subdivisions = 10;
+        [SerializeField] private int subdivisions = 10; 
         
         private string idPrefix = "uniqueId_{0}";
         private int currentIndex = 0;
@@ -79,41 +79,35 @@ namespace gameControllerNamespace
         
         
         //TODO: Cables desaparecen en desconexion
-        //TODO: Timer para deseleccion
         //TODO: conectar cable de entrada A a mando cuando haya una entrada seleccionada
         
-        //TODO: pruebas de click de varios jugadores (TICKET ENVIADO)
         
         private void Start()
         {
-            availableComponents = GameObject.FindGameObjectsWithTag("Respawn");
+            //3 manometros, 1 valvula manual, 1 valvula presion, 1 valvula reguladora canal
             
+            solution.Add(new string[] {"Manometro4IN - Entrada_B", "ValvulaManual4IN - Entrada_B"});
             
+            solution.Add(new string[] {"ValvulaManual4IN - Entrada_T", "Manometro4IN - Entrada_B"});
+            solution.Add(new string[] {"ValvulaManual4IN - Entrada_P", "ValvulaReguladoraCanal2IN - Entrada_B"});
             
-            /*solution.Add("Component_A", "Component_B");
-            solution.Add("Component_B", "Component_A");
-            solution.Add("Component_C", "Component_D");
-            solution.Add("Component_D", "Component_C");*/
-
-            solution.Add("Manometro4IN - Entrada_A", "ValvulaPresion2IN - Entrada_P");
-            solution.Add("ValvulaPresion2IN - Entrada_P", "Manometro4IN - Entrada_A");
-            
-            //solution.Add("ValvulaManual2IN - Entrada_P", "Manometro4IN - Entrada_T");
-            //solution.Add("Manometro4IN - Entrada_T", "ValvulaManual2IN - Entrada_P");
-    
-            //solution.TryGetValue("Component_A", out string value);
-            
-    
+            solution.Add(new string[] {"ValvulaReguladoraCanal2IN - Entrada_A", "Manometro4IN - Entrada_B"});
+            solution.Add(new string[] {"Manometro4IN - Entrada_T", "ValvulaPresion2IN - Entrada_P"});
         }
     
         public void UnselectAll()
         {
+            availableComponents = GameObject.FindGameObjectsWithTag("Respawn");
+            
+            selectedComponent = "";
+            selectedInput = "";
+            
             foreach (GameObject component in availableComponents)
             {
                 //component.GetComponent<Renderer>().material.color = component.GetComponent<ComponentController>().originalColor;
                 component.GetComponent<ComponentController>().linkedWith = "";
                 
-                List<GameObject> inputs = CheckAction.FindChildrenWithTag(component, "Finish");
+                List<GameObject> inputs = CheckAction.FindChildrenWithTag(component.transform.Find("Entradas").gameObject, "Finish");
                 foreach (GameObject input in inputs)
                 {
                     input.GetComponent<InOutController>().linkedWith = "";
@@ -122,6 +116,7 @@ namespace gameControllerNamespace
                 }
                 
             }
+            
             
             GameObject[] cables = (GameObject[])FindObjectsOfType(typeof(GameObject));
             foreach (GameObject cable in cables)
@@ -191,8 +186,8 @@ namespace gameControllerNamespace
             }
 
             line.GetComponent<LineRenderer>().SetPositions(curvePoints);
-            line.GetComponent<LineRenderer>().startWidth = 0.1f;
-            line.GetComponent<LineRenderer>().endWidth= 0.1f;
+            line.GetComponent<LineRenderer>().startWidth = 0.01f;
+            line.GetComponent<LineRenderer>().endWidth= 0.01f;
             
             line.GetComponent<LineRenderer>().material = new Material(Shader.Find("Sprites/Default"));
             line.GetComponent<LineRenderer>().SetColors(c1, c2);
@@ -206,7 +201,6 @@ namespace gameControllerNamespace
         {
             return string.Format(idPrefix, currentIndex++);
         }
-        
     }
     
 }
