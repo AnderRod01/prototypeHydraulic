@@ -13,12 +13,12 @@ namespace VirooLab.Actions
         protected override void LocalExecuteImplementation(string data)
         {
             int i = 1;
-            foreach (var value in gameController.players.Keys)
+            /*foreach (var value in gameController.players.Keys)
             {
                 Debug.Log("Jugador numero " + i + ": " + value); 
             }
 
-            Debug.Log("Length: " + gameController.players.Count);
+            Debug.Log("Length: " + gameController.players.Count);*/
         }
         
     }

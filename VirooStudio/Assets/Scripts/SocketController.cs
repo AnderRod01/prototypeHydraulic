@@ -7,28 +7,23 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class SocketController : MonoBehaviour
 {
-    private XRSocketInteractor socket;
     private XRBaseInteractable attachedObject;
-    void Start()
-    {
-        //socket = GetComponent<XRSocketInteractor>();
-        //socket.selectEntered.AddListener(EnterSnap);
-        //socket.selectExited.AddListener(ExitSnap);
-    }
-    
+
     public void EnterSnap(SelectEnterEventArgs args)
     {
         attachedObject = args.interactable;
         //Debug.Log("Objeto enganchado: " + attachedObject.gameObject.name);
-        BoxCollider[] colliders = attachedObject.GetComponentsInChildren<BoxCollider>();
+        GameObject entrada = BuscarEntradaEnFBX(attachedObject.transform);
+        BoxCollider[] colliders = entrada.gameObject.GetComponentsInChildren<BoxCollider>();
 
-        for (int i = 1; i < colliders.Length; i++)
+        BoxCollider inputT = null;
+        
+        foreach (BoxCollider collider in colliders)
         {
-            BoxCollider collider = colliders[i];
-            collider.enabled = true;
-            //Debug.Log(collider.gameObject.name);
-        }
 
+            collider.enabled = true;
+            Debug.Log(collider.gameObject.name);
+        }
 
         //IXRSelectInteractable objName = socket.GetOldestInteractableSelected();
         //Debug.Log(objName.transform.name + " in socket of " + transform.name);
@@ -38,13 +33,36 @@ public class SocketController : MonoBehaviour
     {
         attachedObject = args.interactable;
         //Debug.Log("Objeto enganchado: " + attachedObject.gameObject.name);
-        BoxCollider[] colliders = attachedObject.GetComponentsInChildren<BoxCollider>();
+        GameObject entrada = BuscarEntradaEnFBX(attachedObject.transform);
+        BoxCollider[] colliders = entrada.gameObject.GetComponentsInChildren<BoxCollider>();
 
-        for (int i = 1; i < colliders.Length; i++)
+        foreach (BoxCollider collider in colliders)
+        {
+            collider.enabled = false;
+            Debug.Log(collider.gameObject.name);
+        }
+        /*for (int i = 1; i < colliders.Length; i++)
         {
             BoxCollider collider = colliders[i];
             collider.enabled = false;
-            //Debug.Log(collider.gameObject.name);
+            
+        }*/
+    }
+
+    GameObject BuscarEntradaEnFBX(Transform parent)
+    {
+        Transform[] children = parent.GetComponentsInChildren<Transform>(false);
+
+        foreach (Transform child in children)
+        {
+            Debug.Log(child.name);
+
+            if (child.gameObject.activeSelf && child.name.Equals("Entradas"))
+            {
+                return child.gameObject;
+            }
         }
+
+        return null;
     }
 }
