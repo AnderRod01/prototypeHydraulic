@@ -1,6 +1,8 @@
 // Author: Mathias Soeholm
 // Date: 05/10/2016
 // No license, do whatever you want with this script
+
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -9,8 +11,9 @@ public class TubeRenderer : MonoBehaviour
 {
     [SerializeField] Vector3[] _positions;
     [SerializeField] int _sides = 8;
-    [SerializeField] float _radiusOne = 1f;
-    [SerializeField] float _radiusTwo = 1f;
+    [SerializeField] float _radiusOne = 0.01f;  // Grosor inicial
+    [SerializeField] float _radiusTwo = 1f;  // Grosor final
+    [SerializeField] float _middleRadius = 0.015f;  // Grosor intermedio
     [SerializeField] bool _useWorldSpace = true;
     [SerializeField] bool _useTwoRadii = false;
 
@@ -19,62 +22,57 @@ public class TubeRenderer : MonoBehaviour
     private MeshFilter _meshFilter;
     private MeshRenderer _meshRenderer;
 
+
     public Material material
     {
         get { return _meshRenderer.material; }
         set { _meshRenderer.material = value; }
     }
 
-    void Awake()
+    public void DestroyCable()
     {
-        _meshFilter = GetComponent<MeshFilter>();
-        if (_meshFilter == null)
-        {
-            _meshFilter = gameObject.AddComponent<MeshFilter>();
-        }
-
-        _meshRenderer = GetComponent<MeshRenderer>();
-        if (_meshRenderer == null)
-        {
-            _meshRenderer = gameObject.AddComponent<MeshRenderer>();
-        }
-
-        _mesh = new Mesh();
-        _meshFilter.mesh = _mesh;
+        _mesh = null;
+        _meshFilter = null;
+        _meshRenderer = null;
     }
-
+    
     private void OnEnable()
     {
-        _meshRenderer.enabled = true;
+        if (_mesh != null)
+            _meshRenderer.enabled = true;
     }
 
     private void OnDisable()
     {
-        _meshRenderer.enabled = false;
+        if (_mesh != null)
+            _meshRenderer.enabled = false;
     }
-
-    void Update()
-    {
-        GenerateMesh();
-    }
-
+    
     private void OnValidate()
     {
         _sides = Mathf.Max(3, _sides);
     }
 
-    public void SetPositions(Vector3[] positions)
+    public void SetPositions(Vector3[] positions, Transform objectA, Transform objectB, GameObject cable)
     {
         _positions = positions;
-        GenerateMesh();
+        GenerateMesh(objectA, objectB, cable);
     }
 
-    private void GenerateMesh()
+    private void GenerateMesh(Transform objectA, Transform objectB, GameObject cable)
     {
         if (_mesh == null || _positions == null || _positions.Length <= 1)
         {
+            //GameObject line = new GameObject();
+            
+            //line.name = "Cable " + objectA.GetComponent<InOutController>().component.componentName + " - " + objectA.name
+                        //+ " / " + objectB.GetComponent<InOutController>().component.componentName + " - " + objectB.name;
+
+            _meshFilter = cable.AddComponent<MeshFilter>();
+            _meshRenderer = cable.AddComponent<MeshRenderer>();
+            
             _mesh = new Mesh();
-            return;
+        
         }
 
         var verticesLength = _sides * _positions.Length;
@@ -118,7 +116,7 @@ public class TubeRenderer : MonoBehaviour
         _meshFilter.mesh = _mesh;
     }
 
-    private Vector2[] GenerateUVs()
+    /*private Vector2[] GenerateUVs()
     {
         var uvs = new Vector2[_positions.Length * _sides];
 
@@ -135,7 +133,28 @@ public class TubeRenderer : MonoBehaviour
         }
 
         return uvs;
+    }*/
+
+    private Vector2[] GenerateUVs()
+    {
+        var uvs = new Vector2[_positions.Length * _sides];
+
+        for (int segment = 0; segment < _positions.Length; segment++)
+        {
+            float v = (float)segment / (_positions.Length - 1);
+
+            for (int side = 0; side < _sides; side++)
+            {
+                float u = (float)side / (_sides - 1);
+                int vertIndex = segment * _sides + side;
+                uvs[vertIndex] = new Vector2(u, v);
+            }
+        }
+
+        return uvs;
     }
+
+
 
     private int[] GenerateIndices()
     {
@@ -188,8 +207,19 @@ public class TubeRenderer : MonoBehaviour
         var angle = 0f;
         var angleStep = (2 * Mathf.PI) / _sides;
 
-        var t = index / (_positions.Length - 1f);
-        var radius = _useTwoRadii ? Mathf.Lerp(_radiusOne, _radiusTwo, t) : _radiusOne;
+        float radius;
+        if (index == 0 || index == _positions.Length - 1)  // Check if it's the first or last point
+        {
+            radius = _middleRadius;  // Use _middleRadius for first and last points
+        }
+        else if (index == 1 || index == _positions.Length - 2)  // Check if it's the second or second-to-last point
+        {
+            radius = _middleRadius;  // Use _middleRadius for second and second-to-last points
+        }
+        else
+        {
+            radius = _radiusOne;
+        }
 
         for (int i = 0; i < _sides; i++)
         {
@@ -203,4 +233,6 @@ public class TubeRenderer : MonoBehaviour
 
         return circle;
     }
+
+
 }

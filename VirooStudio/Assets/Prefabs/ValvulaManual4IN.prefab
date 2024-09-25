@@ -839,7 +839,7 @@ MonoBehaviour:
   component: {fileID: 8865183084309520238}
   linkedWith: 
   linkedWithIn: 
-  originalColor: {fileID: 2100000, guid: eabb5a8800cf19b46a158f2265bd446d, type: 2}
+  originalColor: {fileID: 2100000, guid: 7aedda930c04a4646b79132bdc3ba9fc, type: 2}
   selectedColor: {r: 0.6901961, g: 0.30980393, b: 0.5294118, a: 0}
   selectionPlayer: 
 --- !u!65 &5209428070590719407
@@ -978,7 +978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 3489276432230030885}
-  originalColor: {fileID: 2100000, guid: eabb5a8800cf19b46a158f2265bd446d, type: 2}
+  originalColor: {fileID: 2100000, guid: 7aedda930c04a4646b79132bdc3ba9fc, type: 2}
   hoverColor: {r: 0.44705886, g: 0.15294118, b: 0.3647059, a: 0}
 --- !u!1 &3632436636775713995 stripped
 GameObject:
@@ -1024,7 +1024,7 @@ MonoBehaviour:
   component: {fileID: 8865183084309520238}
   linkedWith: 
   linkedWithIn: 
-  originalColor: {fileID: 2100000, guid: eabb5a8800cf19b46a158f2265bd446d, type: 2}
+  originalColor: {fileID: 2100000, guid: 7aedda930c04a4646b79132bdc3ba9fc, type: 2}
   selectedColor: {r: 0.6901961, g: 0.30980393, b: 0.5294118, a: 0}
   selectionPlayer: 
 --- !u!114 &4722313496764044180
@@ -1142,7 +1142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 3632436636775713995}
-  originalColor: {fileID: 2100000, guid: eabb5a8800cf19b46a158f2265bd446d, type: 2}
+  originalColor: {fileID: 2100000, guid: 7aedda930c04a4646b79132bdc3ba9fc, type: 2}
   hoverColor: {r: 0.44705886, g: 0.15294118, b: 0.3647059, a: 0}
 --- !u!1 &4564784235028187055 stripped
 GameObject:
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   component: {fileID: 8865183084309520238}
   linkedWith: 
   linkedWithIn: 
-  originalColor: {fileID: 2100000, guid: eabb5a8800cf19b46a158f2265bd446d, type: 2}
+  originalColor: {fileID: 2100000, guid: 7aedda930c04a4646b79132bdc3ba9fc, type: 2}
   selectedColor: {r: 0.6901961, g: 0.30980393, b: 0.5294118, a: 0}
   selectionPlayer: 
 --- !u!114 &3400762414549707095
@@ -1306,7 +1306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 4564784235028187055}
-  originalColor: {fileID: 2100000, guid: eabb5a8800cf19b46a158f2265bd446d, type: 2}
+  originalColor: {fileID: 2100000, guid: 7aedda930c04a4646b79132bdc3ba9fc, type: 2}
   hoverColor: {r: 0.44705886, g: 0.15294118, b: 0.3647059, a: 0}
 --- !u!1 &4988608073525026352 stripped
 GameObject:
@@ -1368,7 +1368,7 @@ MonoBehaviour:
   component: {fileID: 8865183084309520238}
   linkedWith: 
   linkedWithIn: 
-  originalColor: {fileID: 2100000, guid: eabb5a8800cf19b46a158f2265bd446d, type: 2}
+  originalColor: {fileID: 2100000, guid: 7aedda930c04a4646b79132bdc3ba9fc, type: 2}
   selectedColor: {r: 0.6901961, g: 0.30980393, b: 0.5294118, a: 0}
   selectionPlayer: 
 --- !u!114 &5220636367074448574
@@ -1470,7 +1470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 4988608073525026352}
-  originalColor: {fileID: 2100000, guid: eabb5a8800cf19b46a158f2265bd446d, type: 2}
+  originalColor: {fileID: 2100000, guid: 7aedda930c04a4646b79132bdc3ba9fc, type: 2}
   hoverColor: {r: 0.44705886, g: 0.15294118, b: 0.3647059, a: 0}
 --- !u!4 &5785228586761182707 stripped
 Transform:

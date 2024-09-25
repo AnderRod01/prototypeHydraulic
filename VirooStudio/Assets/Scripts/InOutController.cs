@@ -26,6 +26,7 @@ namespace DefaultNamespace
 
         public string selectionPlayer;
         
+        
         private void Start()
         {
             gameController = GameObject.Find("GameController").GetComponent<GameController>();
@@ -107,7 +108,7 @@ namespace DefaultNamespace
                 
                 //transform.GetChild(0).GetComponent<MeshRenderer>().transform.localScale -= new Vector3(0.3f, 0.3f, 0.3f);
                 //otherInput.transform.GetChild(0).GetComponent<MeshRenderer>().transform.localScale -= new Vector3(0.3f, 0.3f, 0.3f);
-
+                gameController.GetComponent<GameController>().tubeRenderer.DestroyCable();
                 return;
             }
             

@@ -40,7 +40,7 @@ public class CreateNetworkObject : MonoBehaviour
                 
                 if (spawnManager.currentIndex == 4)
                 {
-                    spawnManager.estranguladoras[spawnManager.currentIndexestranguladora].SetActive(true);
+                    spawnManager.estranguladoras[spawnManager.currentIndexestranguladora].GetComponent<SpawnEstranguladoraAction>().Execute(string.Empty);
                     spawnManager.currentIndexestranguladora++;
                     
                     if ((spawnManager.currentIndex == 4 && spawnManager.currentIndexestranguladora == spawnManager.estranguladoras.Length - 1) ||
@@ -59,7 +59,7 @@ public class CreateNetworkObject : MonoBehaviour
                 
                 if (spawnManager.currentIndex == 5)
                 {
-                    spawnManager.manometros[spawnManager.currentIndexManometro].SetActive(true);
+                    spawnManager.manometros[spawnManager.currentIndexManometro].GetComponent<SpawnManometroAction>().Execute(string.Empty);
                     spawnManager.currentIndexManometro++;
                     
                     if ((spawnManager.currentIndex == 4 && spawnManager.currentIndexestranguladora == spawnManager.estranguladoras.Length - 1) ||

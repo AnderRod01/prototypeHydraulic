@@ -3,7 +3,12 @@ guid: 2d582b57671ef014aa5f08d12749720c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Repartidor_en_T_con_manometro1
+    second: {fileID: 2100000, guid: f65fe13242e104143aea5e998c65d5ed, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

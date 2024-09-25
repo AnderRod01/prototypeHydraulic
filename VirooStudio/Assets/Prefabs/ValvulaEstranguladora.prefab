@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 2289372617064154918}
   - component: {fileID: 4032633707439682904}
   - component: {fileID: 6152299241472003659}
+  - component: {fileID: 5090437395490098186}
   m_Layer: 0
   m_Name: ValvulaEstranguladora
   m_TagString: Untagged
@@ -56,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849dafdcc81e41c47a938a4534a2366a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectId: HydraulicTest-e20a1bee-ba4a-41ed-af6e-3a08798a3635
+  objectId: ValvulaEstranguladora-3961ff28-7dc8-4f54-b6a0-aae18a29a29b
   authority: 0
 --- !u!114 &2577543701711644713
 MonoBehaviour:
@@ -382,6 +383,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5090437395490098186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2163377255091441942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919dd178385415344b5cd636c2ada8ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 311de0ce-4e69-486f-9205-dcee14416b4e
+  textId: 
+  startsEnabled: 1
+  shouldPersist: 1
 --- !u!1 &5018135602342701516
 GameObject:
   m_ObjectHideFlags: 0

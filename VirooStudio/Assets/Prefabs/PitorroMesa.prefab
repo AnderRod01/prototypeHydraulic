@@ -399,6 +399,7 @@ MonoBehaviour:
   linkedWithIn: 
   originalColor: {fileID: 2100000, guid: 3839d225277a55c48bf29d41c871c41f, type: 2}
   selectedColor: {r: 0.6901961, g: 0.30980393, b: 0.5294118, a: 0}
+  selectionPlayer: 
 --- !u!114 &543778657707693168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,8 +677,9 @@ MonoBehaviour:
   component: {fileID: 5511439962645330664}
   linkedWith: 
   linkedWithIn: 
-  originalColor: {fileID: 2100000, guid: 3839d225277a55c48bf29d41c871c41f, type: 2}
+  originalColor: {fileID: 2100000, guid: cc5b07c95873a6b4eb9a805939cc3b45, type: 2}
   selectedColor: {r: 0.6901961, g: 0.30980393, b: 0.5294118, a: 0}
+  selectionPlayer: 
 --- !u!114 &5272896995681335646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -793,7 +795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 8144598439747400231}
-  originalColor: {fileID: 2100000, guid: 3839d225277a55c48bf29d41c871c41f, type: 2}
+  originalColor: {fileID: 2100000, guid: cc5b07c95873a6b4eb9a805939cc3b45, type: 2}
   hoverColor: {r: 0.44705886, g: 0.15294118, b: 0.3647059, a: 0}
 --- !u!4 &8812626986794510493 stripped
 Transform:

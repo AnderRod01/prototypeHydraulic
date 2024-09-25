@@ -9,6 +9,7 @@ using TMPro;
 using Unity.VisualScripting.Community.Libraries.Humility;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Filtering;
 using Viroo.UI;
 using VirooLab.Actions;
 using Virtualware.Networking.Client.SessionManagement;
@@ -35,16 +36,20 @@ namespace gameControllerNamespace
         private string idPrefix = "uniqueId_{0}";
         private int currentIndex = 0;
         
-        public int curveResolution = 30;
-        public float curveHeight = 0.3f;
+        public int curveResolution = 20;
+        public float curveHeight = 0.1f;
+        
+        public TubeRenderer tubeRenderer;
         
         //public float curveHeightFactor; // Factor que controla la altura del arco
         //public Vector3 curveDirection; // Dirección de la curvatura
         //public float curveDistance; // Distancia de desplazamiento en la dirección de la curvatura
 
         public Dictionary<string, string[]> players = new Dictionary<string, string[]>();
-        
-        
+
+        private Color randomColor;
+
+        private RandomColorGeneratorBroadcast randomColorGenerator;
         //Canvas para logs en Singleplayer
         
        
@@ -77,7 +82,7 @@ namespace gameControllerNamespace
 
             debugLogText.text = builder.ToString();
         }*/
-        
+        public Material yourGradientMaterial;
         public string layerName = "Water";
 
         GameObject[] GetObjectsInLayer(int layer)
@@ -103,23 +108,6 @@ namespace gameControllerNamespace
         
         private void Start()
         {
-           /* 
-            // Obtener el índice de la capa a partir del nombre de la capa
-            int layer = LayerMask.NameToLayer(layerName);
-
-            // Llamar al método para encontrar todos los objetos en esa capa
-            GameObject[] objectsInLayer = GetObjectsInLayer(layer);
-
-            // Imprimir el nombre de cada objeto encontrado
-            foreach (GameObject obj in objectsInLayer)
-            {
-                Debug.Log("OBJETO EN CAPA WATER: " + obj.name);
-            }*/
-           
-           
-           
-           
-           
            //3 manometros, 1 valvula manual, 1 valvula presion, 1 valvula reguladora canal
             
             solution.Add(new string[] {"PistonLateral2IN - Entrada_A", "Manometro4IN - Entrada_T"});
@@ -128,8 +116,6 @@ namespace gameControllerNamespace
             solution.Add(new string[] {"PistonLateral2IN - Entrada_B", "Manometro4IN - Entrada_A"});
             solution.Add(new string[] {"Manometro4IN - Entrada_B", "Manometro4IN - Entrada_T1"});
             solution.Add(new string[] {"Manometro4IN - Entrada_P", "ValvulaReductoraPresion3IN - Entrada_P"});
-            
-            
             
             solution.Add(new string[] {"ValvulaReductoraPresion3IN - Entrada_T", "Tanque2IN - Entrada_B"});
             solution.Add(new string[] {"ValvulaReductoraPresion3IN - Entrada_A", "Manometro4IN - Entrada_A"});
@@ -145,7 +131,6 @@ namespace gameControllerNamespace
             solution.Add(new string[] {"Manometro4IN - Entrada_P", "PitorroMesa2IN - Entrada_P"});
             solution.Add(new string[] {"Manometro4IN - Entrada_B", "ValvulaLimitadoraPresion2IN - Entrada_P"});
             solution.Add(new string[] {"PitorroMesa2IN - Entrada_P", "ValvulaLimitadoraPresion2IN - Entrada_T"});
-            
 
         }
     
@@ -207,56 +192,16 @@ namespace gameControllerNamespace
         
         public void DrawLine(Transform objectA, Transform objectB)
         {
-            GameObject line = new GameObject();
+            //GameObject line = new GameObject();
             
-            line.name = "Cable " + objectA.GetComponent<InOutController>().component.componentName + " - " + objectA.name
-                + " / " + objectB.GetComponent<InOutController>().component.componentName + " - " + objectB.name;
+            //line.name = "Cable " + objectA.GetComponent<InOutController>().component.componentName + " - " + objectA.name
+                        //+ " / " + objectB.GetComponent<InOutController>().component.componentName + " - " + objectB.name;
             
-            line.AddComponent<LineRenderer>();
-            line.GetComponent<LineRenderer>().positionCount = curveResolution;
+            //line.AddComponent<LineRenderer>();
+            //line.GetComponent<LineRenderer>().positionCount = curveResolution;
             
-            
-            /*Vector3[] curvePoints = new Vector3[subdivisions + 2]; // Incrementado en 1 para incluir pointA y pointB
-
-            // Primer punto en pointA
-            curvePoints[0] = pointA.transform.position;
-
-            // Segundo punto a una distancia curveDistance en la dirección de curveDirection
-            curvePoints[1] = pointA.transform.position + curveDirection * curveDistance;
-
-            // Último punto en pointB
-            curvePoints[subdivisions + 1] = pointB.transform.position;
-
-            // Penúltimo punto a una distancia curveDistance en la dirección opuesta de curveDirection
-            curvePoints[subdivisions] = pointB.transform.position + curveDirection * curveDistance;
-
-            // Calcular la altura máxima para los puntos intermedios
-            float maxCurveHeight = Mathf.Max(pointA.transform.position.y, pointB.transform.position.y) + curveHeightFactor;
-
-            // Calcular los puntos intermedios
-            for (int i = 2; i < subdivisions; i++)
-            {
-                float t = (float)i / subdivisions;
-                curvePoints[i] = Vector3.Lerp(curvePoints[1], curvePoints[subdivisions], t);
-
-                // Ajustar la altura para asegurar que estén por encima de los puntos inicial y final
-                float tHeight = Mathf.Sin(t * Mathf.PI);
-                curvePoints[i] += curveDirection * maxCurveHeight * tHeight/2;
-            }
-
-            line.GetComponent<LineRenderer>().SetPositions(curvePoints);
-            line.GetComponent<LineRenderer>().startWidth = 0.01f;
-            line.GetComponent<LineRenderer>().endWidth= 0.01f;
-            
-            line.GetComponent<LineRenderer>().material = new Material(Shader.Find("Sprites/Default"));
-            line.GetComponent<LineRenderer>().SetColors(c1, c2);
-            
-            
-            
-            Debug.Log(pointA.transform.position.x + " / " + pointB.transform.position.x);*/
-            line.GetComponent<LineRenderer>().material = new Material(Shader.Find("Sprites/Default"));
-            //line.GetComponent<LineRenderer>().SetColors(c1,c2);
-            SetLineColors(line.GetComponent<LineRenderer>());
+            //line.GetComponent<LineRenderer>().material = new Material(Shader.Find("Sprites/Default"));
+            //SetLineColors(line.GetComponent<LineRenderer>());
             
             Vector3 startPoint = objectA.position;
             Vector3 endPoint = objectB.position;
@@ -267,15 +212,37 @@ namespace gameControllerNamespace
             Vector3 controlPointA = startPoint + startDirection * curveHeight;
             Vector3 controlPointB = endPoint + endDirection * curveHeight;
 
+            Vector3[] originalPositions = new Vector3[curveResolution];
             for (int i = 0; i < curveResolution; i++)
             {
                 float t = i / (float)(curveResolution - 1);
                 Vector3 point = CalculateBezierPoint(t, startPoint, controlPointA, controlPointB, endPoint);
-                line.GetComponent<LineRenderer>().SetPosition(i, point);
-                line.GetComponent<LineRenderer>().startWidth = 0.01f;
-                line.GetComponent<LineRenderer>().endWidth= 0.01f;
+                originalPositions[i] = point;
             }
+
+            // Create a new array to hold the modified positions with duplicated points
+            Vector3[] positions = new Vector3[curveResolution + 2];
+            int newIndex = 0;
+            for (int i = 0; i < curveResolution; i++)
+            {
+                positions[newIndex++] = originalPositions[i];
+                if (i == 1 || i == curveResolution - 2)  // Modify this line
+                {
+                    positions[newIndex++] = originalPositions[i];  // Duplicate control point A instead of B
+                }
+            }
+
+            GameObject cable = new GameObject();
+            cable.AddComponent<TubeRenderer>();
             
+            cable.name = "Cable " + objectA.GetComponent<InOutController>().component.componentName + " - " + objectA.name
+                        + " / " + objectB.GetComponent<InOutController>().component.componentName + " - " + objectB.name;
+
+            
+            cable.GetComponent<TubeRenderer>().SetPositions(positions, objectA, objectB, cable);
+            
+            
+            SetLineColors(cable);
             
         }
         
@@ -287,15 +254,16 @@ namespace gameControllerNamespace
             float uuu = uu * u;
             float ttt = tt * t;
 
-            Vector3 p = uuu * p0; // (1-t)^3 * p0
-            p += 3 * uu * t * p1; // 3 * (1-t)^2 * t * p1
-            p += 3 * u * tt * p2; // 3 * (1-t) * t^2 * p2
-            p += ttt * p3; // t^3 * p3
+            Vector3 p = uuu * p0;
+            p += 3 * uu * t * p1;
+            p += 3 * u * tt * p2;
+            p += ttt * p3;
 
             return p;
         }
-        void SetLineColors(LineRenderer lineRenderer)
+        void SetLineColors(GameObject cable)
         {
+            
             Gradient gradient = new Gradient();
 
             GradientColorKey[] colorKey = new GradientColorKey[4];
@@ -304,8 +272,12 @@ namespace gameControllerNamespace
             // First 10% is black
             colorKey[0].color = c1;
             colorKey[0].time = 0.05f;
-
-            Color randomColor = new Color(Random.value, Random.value, Random.value);
+            
+                        
+            randomColorGenerator = GameObject.Find("RandomColorGenerator").GetComponent<RandomColorGeneratorBroadcast>();
+            randomColorGenerator.Execute(string.Empty);
+            //Wait(0.5f);
+            randomColor = randomColorGenerator.generatedColor;
             colorKey[1].color = randomColor;
             colorKey[1].time = 0.1f;
             colorKey[2].color = randomColor;
@@ -320,11 +292,27 @@ namespace gameControllerNamespace
             alphaKey[1].alpha = 1.0f;
             alphaKey[1].time = 1.0f;
 
+            
+            
+            
             gradient.SetKeys(colorKey, alphaKey);
+            yourGradientMaterial.SetColor("_ColorB", randomColor);
 
-            lineRenderer.colorGradient = gradient;
+            //tubeRenderer.material = yourGradientMaterial;
+            Material material = new Material(yourGradientMaterial);
+            
+            cable.GetComponent<TubeRenderer>().material = material;
+            //lineRenderer.colorGradient = gradient;
+            
+
+            
         }
 
+        private IEnumerator Wait(float t)
+        {
+            yield return new WaitForSeconds(t);
+        
+        }
         public string GetUniqueId()
         {
             return string.Format(idPrefix, currentIndex++);

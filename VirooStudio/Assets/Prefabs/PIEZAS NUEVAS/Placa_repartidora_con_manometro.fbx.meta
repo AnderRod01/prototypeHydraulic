@@ -3,7 +3,12 @@ guid: 0895f4e118bd7fb498a41aed5146d278
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Placa_repartidora_con_manometro_OK
+    second: {fileID: 2100000, guid: e478c54efc999a84587433f18b87e11a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

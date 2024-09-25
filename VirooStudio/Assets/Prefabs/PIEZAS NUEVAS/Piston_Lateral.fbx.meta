@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Piston_Lateral_MAT
-    second: {fileID: 2100000, guid: f23b4547c55766d4e9505b4c20a2aa49, type: 2}
+    second: {fileID: 2100000, guid: 467ec9892ae521a4c8f4dc4dd3f6da88, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

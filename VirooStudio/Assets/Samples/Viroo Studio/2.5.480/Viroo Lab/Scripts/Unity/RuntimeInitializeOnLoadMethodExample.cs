@@ -19,8 +19,8 @@ namespace VirooLab
         {
             if (s_executeAction)
             {
-                RandomColorAction randomColorAction = GameObject.Find("RandomColorAction").GetComponent<RandomColorAction>();
-                randomColorAction.LocalExecute(string.Empty);
+                //RandomColorAction randomColorAction = GameObject.Find("RandomColorAction").GetComponent<RandomColorAction>();
+                //randomColorAction.LocalExecute(string.Empty);
             }
         }
 

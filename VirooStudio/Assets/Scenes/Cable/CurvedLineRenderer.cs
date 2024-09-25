@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class CurvedLine : MonoBehaviour
+public class CurvedLineRenderer : MonoBehaviour
 {
     public Transform objectA;
     public Transform objectB;
@@ -10,12 +10,12 @@ public class CurvedLine : MonoBehaviour
     public TubeRenderer tubeRenderer;
 
     private LineRenderer lineRenderer;
+    public Material yourGradientMaterial;
 
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = curveResolution;
-        SetLineColors();
     }
 
     void Update()
@@ -34,17 +34,39 @@ public class CurvedLine : MonoBehaviour
         Vector3 controlPointA = startPoint + startDirection * curveHeight;
         Vector3 controlPointB = endPoint + endDirection * curveHeight;
 
-        Vector3[] positions = new Vector3[curveResolution];
+        Vector3[] originalPositions = new Vector3[curveResolution];
         for (int i = 0; i < curveResolution; i++)
         {
             float t = i / (float)(curveResolution - 1);
             Vector3 point = CalculateBezierPoint(t, startPoint, controlPointA, controlPointB, endPoint);
-            positions[i] = point;
-            lineRenderer.SetPosition(i, point);
+            originalPositions[i] = point;
         }
 
+        // Create a new array to hold the modified positions with duplicated points
+        Vector3[] positions = new Vector3[curveResolution + 2];
+        int newIndex = 0;
+        for (int i = 0; i < curveResolution; i++)
+        {
+            positions[newIndex++] = originalPositions[i];
+            if (i == 1 || i == curveResolution - 2)  // Modify this line
+            {
+                positions[newIndex++] = originalPositions[i];  // Duplicate control point A instead of B
+            }
+        }
+
+        // Update the LineRenderer positions
+        lineRenderer.positionCount = positions.Length;
+        for (int i = 0; i < positions.Length; i++)
+        {
+            lineRenderer.SetPosition(i, positions[i]);
+        }
+
+        // Set the positions to the TubeRenderer
         tubeRenderer.SetPositions(positions);
+        tubeRenderer.material = yourGradientMaterial; // Asigna aquí tu material con gradiente configurado
+
     }
+
 
     Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
     {
@@ -62,31 +84,14 @@ public class CurvedLine : MonoBehaviour
         return p;
     }
 
-    void SetLineColors()
+    public void SetObjectA(Transform newObjectA)
     {
-        Gradient gradient = new Gradient();
-
-        GradientColorKey[] colorKey = new GradientColorKey[4];
-        GradientAlphaKey[] alphaKey = new GradientAlphaKey[2];
-
-        colorKey[0].color = Color.black;
-        colorKey[0].time = 0.1f;
-
-        Color randomColor = new Color(Random.value, Random.value, Random.value);
-        colorKey[1].color = randomColor;
-        colorKey[1].time = 0.1f;
-        colorKey[2].color = randomColor;
-        colorKey[2].time = 0.89f;
-
-        colorKey[3].color = Color.black;
-        colorKey[3].time = 0.89f;
-
-        alphaKey[0].alpha = 1.0f;
-        alphaKey[0].time = 0.0f;
-        alphaKey[1].alpha = 1.0f;
-        alphaKey[1].time = 1.0f;
-
-        gradient.SetKeys(colorKey, alphaKey);
-        lineRenderer.colorGradient = gradient;
+        objectA = newObjectA;
     }
+
+    public void SetObjectB(Transform newObjectB)
+    {
+        objectB = newObjectB;
+    }
+
 }

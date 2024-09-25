@@ -766,7 +766,7 @@ MonoBehaviour:
   component: {fileID: 2024121011121289395}
   linkedWith: 
   linkedWithIn: 
-  originalColor: {fileID: 2100000, guid: 7a82a472fcfd0d04f8bba47f22eee3d0, type: 2}
+  originalColor: {fileID: 2100000, guid: 30f69124a0635d7469ca4e9d16bfebfc, type: 2}
   selectedColor: {r: 0.6901961, g: 0.30980393, b: 0.5294118, a: 0}
   selectionPlayer: 
 --- !u!114 &3812411584176133592
@@ -884,7 +884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 3624651650845416991}
-  originalColor: {fileID: 2100000, guid: 7a82a472fcfd0d04f8bba47f22eee3d0, type: 2}
+  originalColor: {fileID: 2100000, guid: 30f69124a0635d7469ca4e9d16bfebfc, type: 2}
   hoverColor: {r: 0.44705886, g: 0.15294118, b: 0.3647059, a: 0}
 --- !u!4 &3634876276495415136 stripped
 Transform:
@@ -936,7 +936,7 @@ MonoBehaviour:
   component: {fileID: 2024121011121289395}
   linkedWith: 
   linkedWithIn: 
-  originalColor: {fileID: 2100000, guid: 7a82a472fcfd0d04f8bba47f22eee3d0, type: 2}
+  originalColor: {fileID: 2100000, guid: 30f69124a0635d7469ca4e9d16bfebfc, type: 2}
   selectedColor: {r: 0.6901961, g: 0.30980393, b: 0.5294118, a: 0}
   selectionPlayer: 
 --- !u!114 &223861671513931666
@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 4429395816367687573}
-  originalColor: {fileID: 2100000, guid: 7a82a472fcfd0d04f8bba47f22eee3d0, type: 2}
+  originalColor: {fileID: 2100000, guid: 30f69124a0635d7469ca4e9d16bfebfc, type: 2}
   hoverColor: {r: 0.44705886, g: 0.15294118, b: 0.3647059, a: 0}
 --- !u!1 &5123450998857195018 stripped
 GameObject:
@@ -1116,7 +1116,7 @@ MonoBehaviour:
   component: {fileID: 2024121011121289395}
   linkedWith: 
   linkedWithIn: 
-  originalColor: {fileID: 2100000, guid: 7a82a472fcfd0d04f8bba47f22eee3d0, type: 2}
+  originalColor: {fileID: 2100000, guid: 30f69124a0635d7469ca4e9d16bfebfc, type: 2}
   selectedColor: {r: 0.6901961, g: 0.30980393, b: 0.5294118, a: 0}
   selectionPlayer: 
 --- !u!114 &1635472371936156238
@@ -1218,7 +1218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 5123450998857195018}
-  originalColor: {fileID: 2100000, guid: 7a82a472fcfd0d04f8bba47f22eee3d0, type: 2}
+  originalColor: {fileID: 2100000, guid: 30f69124a0635d7469ca4e9d16bfebfc, type: 2}
   hoverColor: {r: 0.44705886, g: 0.15294118, b: 0.3647059, a: 0}
 --- !u!4 &5938134281868008905 stripped
 Transform:

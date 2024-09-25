@@ -63,9 +63,7 @@ public class ComponentSelector : MonoBehaviour
             UpdateComponent();
             UpdateButtonInteractable();
         }
-
-        //spawnButton.interactable = currentIndex != 4; //(currentIndex == 4 && currentIndexestranguladora == estranguladoras.Length) || 
-        //(currentIndex == 5 && currentIndexManometro ==  manometros.Length);
+        
         
         if ((currentIndex == 4 && currentIndexestranguladora == estranguladoras.Length - 1) ||
             (currentIndex == 5 && currentIndexManometro ==  manometros.Length))
@@ -92,8 +90,6 @@ public class ComponentSelector : MonoBehaviour
             UpdateButtonInteractable();
         }
         
-        //spawnButton.interactable = (currentIndex == 4 && currentIndexestranguladora == estranguladoras.Length) || 
-          //                         (currentIndex == 5 && currentIndexManometro ==  manometros.Length);
       if ((currentIndex == 4 && currentIndexestranguladora == estranguladoras.Length - 1) ||
           (currentIndex == 5 && currentIndexManometro ==  manometros.Length))
       {

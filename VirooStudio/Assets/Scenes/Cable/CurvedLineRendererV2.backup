@@ -1,0 +1,86 @@
+using UnityEngine;
+
+[RequireComponent(typeof(LineRenderer))]
+public class CurvedLineRenderer : MonoBehaviour
+{
+    public Transform objectA;
+    public Transform objectB;
+    public int curveResolution = 20;
+    public float curveHeight = 2.0f;
+    public TubeRenderer tubeRenderer;
+
+    private LineRenderer lineRenderer;
+    public Material yourGradientMaterial;
+
+    void Start()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.positionCount = curveResolution;
+    }
+
+    void Update()
+    {
+        DrawCurve();
+    }
+
+    void DrawCurve()
+    {
+        Vector3 startPoint = objectA.position;
+        Vector3 endPoint = objectB.position;
+
+        Vector3 startDirection = objectA.TransformDirection(Vector3.up);
+        Vector3 endDirection = objectB.TransformDirection(Vector3.up);
+
+        Vector3 controlPointA = startPoint + startDirection * curveHeight;
+        Vector3 controlPointB = endPoint + endDirection * curveHeight;
+
+        Vector3[] originalPositions = new Vector3[curveResolution];
+        for (int i = 0; i < curveResolution; i++)
+        {
+            float t = i / (float)(curveResolution - 1);
+            Vector3 point = CalculateBezierPoint(t, startPoint, controlPointA, controlPointB, endPoint);
+            originalPositions[i] = point;
+        }
+
+        // Create a new array to hold the modified positions with duplicated points
+        Vector3[] positions = new Vector3[curveResolution + 2];
+        int newIndex = 0;
+        for (int i = 0; i < curveResolution; i++)
+        {
+            positions[newIndex++] = originalPositions[i];
+            if (i == 1 || i == curveResolution - 2)  // Modify this line
+            {
+                positions[newIndex++] = originalPositions[i];  // Duplicate control point A instead of B
+            }
+        }
+
+        // Update the LineRenderer positions
+        lineRenderer.positionCount = positions.Length;
+        for (int i = 0; i < positions.Length; i++)
+        {
+            lineRenderer.SetPosition(i, positions[i]);
+        }
+
+        // Set the positions to the TubeRenderer
+        tubeRenderer.SetPositions(positions);
+        tubeRenderer.material = yourGradientMaterial; // Asigna aquí tu material con gradiente configurado
+
+    }
+
+
+    Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
+    {
+        float u = 1 - t;
+        float tt = t * t;
+        float uu = u * u;
+        float uuu = uu * u;
+        float ttt = tt * t;
+
+        Vector3 p = uuu * p0;
+        p += 3 * uu * t * p1;
+        p += 3 * u * tt * p2;
+        p += ttt * p3;
+
+        return p;
+    }
+}

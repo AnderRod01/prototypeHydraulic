@@ -225,7 +225,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: dd882c2de278a264b85b95f76bc9c3c4, type: 2}
+      objectReference: {fileID: 2100000, guid: aab664c6309b2cf469cf80405833251a, type: 2}
     - target: {fileID: 919132149155446097, guid: 7437ba1f8d50e894ebaa635fce0441e2,
         type: 3}
       propertyPath: m_Name
@@ -364,8 +364,9 @@ MonoBehaviour:
   component: {fileID: 4861091334553675667}
   linkedWith: 
   linkedWithIn: 
-  originalColor: {fileID: 2100000, guid: 6557176e402b01b4aa427c6b9c78a50e, type: 2}
+  originalColor: {fileID: 2100000, guid: 191ef60d86a396646b2c07b844956939, type: 2}
   selectedColor: {r: 0.6901961, g: 0.30980393, b: 0.5294118, a: 0}
+  selectionPlayer: 
 --- !u!114 &6020273003053070410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 1213955565981551405}
-  originalColor: {fileID: 2100000, guid: 6557176e402b01b4aa427c6b9c78a50e, type: 2}
+  originalColor: {fileID: 2100000, guid: 191ef60d86a396646b2c07b844956939, type: 2}
   hoverColor: {r: 0.44705886, g: 0.15294118, b: 0.3647059, a: 0}
 --- !u!4 &1217137279296610898 stripped
 Transform:
@@ -549,8 +550,9 @@ MonoBehaviour:
   component: {fileID: 4861091334553675667}
   linkedWith: 
   linkedWithIn: 
-  originalColor: {fileID: 2100000, guid: 6557176e402b01b4aa427c6b9c78a50e, type: 2}
+  originalColor: {fileID: 2100000, guid: 191ef60d86a396646b2c07b844956939, type: 2}
   selectedColor: {r: 0.6901961, g: 0.30980393, b: 0.5294118, a: 0}
+  selectionPlayer: 
 --- !u!114 &2203140697492377025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,7 +652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 1359438008342239683}
-  originalColor: {fileID: 2100000, guid: 6557176e402b01b4aa427c6b9c78a50e, type: 2}
+  originalColor: {fileID: 2100000, guid: 191ef60d86a396646b2c07b844956939, type: 2}
   hoverColor: {r: 0.44705886, g: 0.15294118, b: 0.3647059, a: 0}
 --- !u!4 &8132416552635275410 stripped
 Transform:

@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Placa_repartidora_con_manometro_OK
-    second: {fileID: 2100000, guid: 73137fa2ba4b46f4b87c4ced663bf6be, type: 2}
+    second: {fileID: 2100000, guid: e478c54efc999a84587433f18b87e11a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Valvula_estranguladora1
-    second: {fileID: 2100000, guid: b90e14ae47e067144b33d87032ad430a, type: 2}
+    second: {fileID: 2100000, guid: 518f1ac819904d448bac99c4f102eba1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -1,0 +1,19 @@
+{
+    "name": "UnityEventTesting",
+    "rootNamespace": "",
+    "references": [
+        "GUID:30ea38a2c9d551a46a0b7786493bd1c7",
+        "GUID:55208cffab3211f4bb4f32c8197ddb3b",
+        "GUID:564079ac9a867ee408a38d195c7a05c6",
+        "GUID:d8804b16bb76095458ded3db722c999d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

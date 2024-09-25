@@ -3,7 +3,12 @@ guid: 5e66800bc4fb7c445bd2da1b375ce6e0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Valvula_reguladora_canal_OK
+    second: {fileID: 2100000, guid: 1c46faa699d310f499191538968688c0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

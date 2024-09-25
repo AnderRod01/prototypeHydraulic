@@ -225,7 +225,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4590af1293e84c84db39e7985e9f65f3, type: 2}
+      objectReference: {fileID: 2100000, guid: ec80b7515b8f5e044a8e520453014ef9, type: 2}
     - target: {fileID: 919132149155446097, guid: deec06ea6040d9745b8a7259b5b216d6,
         type: 3}
       propertyPath: m_Name
@@ -380,8 +380,9 @@ MonoBehaviour:
   component: {fileID: 2154505056307734224}
   linkedWith: 
   linkedWithIn: 
-  originalColor: {fileID: 2100000, guid: f23b4547c55766d4e9505b4c20a2aa49, type: 2}
+  originalColor: {fileID: 2100000, guid: 467ec9892ae521a4c8f4dc4dd3f6da88, type: 2}
   selectedColor: {r: 0.6901961, g: 0.30980393, b: 0.5294118, a: 0}
+  selectionPlayer: 
 --- !u!114 &5488365036312071248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,8 +528,9 @@ MonoBehaviour:
   component: {fileID: 2154505056307734224}
   linkedWith: 
   linkedWithIn: 
-  originalColor: {fileID: 2100000, guid: f23b4547c55766d4e9505b4c20a2aa49, type: 2}
+  originalColor: {fileID: 2100000, guid: 467ec9892ae521a4c8f4dc4dd3f6da88, type: 2}
   selectedColor: {r: 0.6901961, g: 0.30980393, b: 0.5294118, a: 0}
+  selectionPlayer: 
 --- !u!114 &479067026882616310
 MonoBehaviour:
   m_ObjectHideFlags: 0
