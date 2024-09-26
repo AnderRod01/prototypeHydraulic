@@ -60,8 +60,8 @@ public class RandomColorGeneratorBroadcast : BroadcastObjectAction
             new Color(0.5f, 0.5f, 0.8f, 1f),  // Lila suave
             new Color(0.6f, 0.4f, 0.7f, 1f),  // Morado lavanda
             new Color(0.2f, 0.8f, 0.5f, 1f)   // Verde mar
-        };    
-    public Color generatedColor; // Cadena p�blica para almacenar el n�mero aleatorio generado.
+        };
+    public Color currentColor; // Color sincronizado actual (para el cable a crear)
     private ISessionClientsProvider sessionClientsProvider;
 
     public void Inject(ISessionClientsProvider sessionClientsProvider)
@@ -69,44 +69,57 @@ public class RandomColorGeneratorBroadcast : BroadcastObjectAction
         this.sessionClientsProvider = sessionClientsProvider;
     }
 
+    private void Start()
+    {
+        // Generar el color inicial para el primer cable
+        GenerateAndSyncColor();
+    }
 
     public override void Execute(string data)
     {
-        // Generamos el n�mero solo si no se recibe uno de la red.
+        // Si no se recibe un color de la red, generamos uno localmente
         string randomData = string.IsNullOrEmpty(data) ? GenerateRandom() : data;
-        
-        generatedColor = customColors.ElementAt(int.Parse(randomData));
-        
-        Debug.Log(randomData);
-        if (codeDisplayDebug != null) // Verifica si el objeto TextMeshPro est� asignado.
-        {
-            codeDisplayDebug.text = generatedColor.ToString();
-        }
-        
-        base.Execute(randomData); // Env�a el dato aleatorio o sincronizado a la clase base para su difusi�n.
-       
-        
-        
-        //LocalExecuteImplementation(randomData);
-        
-
+        base.Execute(randomData);  // Difunde el color generado o recibido a todos los demás clientes.
+        UpdateLocalColor(randomData);  // Actualiza el color localmente.
     }
 
     protected override void LocalExecuteImplementation(string data)
     {
-
-
+        // Actualiza el color recibido desde la red
+        UpdateLocalColor(data);
     }
-    
-    
-    private IEnumerator Wait(float t)
+
+    private void UpdateLocalColor(string data)
     {
-        yield return new WaitForSeconds(t);
-        
+        int colorIndex = int.Parse(data);  // Convierte el string a un índice
+        currentColor = customColors[colorIndex];  // Selecciona el color de la lista
+
+        // Opcional: muestra el color en pantalla para depuración
+        if (codeDisplayDebug != null)
+        {
+            codeDisplayDebug.text = "Color actual: " + currentColor.ToString();
+        }
     }
 
     private string GenerateRandom()
     {
-        return Random.Range(0, 49).ToString(); // Genera un n�mero aleatorio entre 1 y 50.
+        // Genera un índice aleatorio basado en la cantidad de colores disponibles
+        return Random.Range(0, customColors.Count).ToString();
+    }
+
+    // Este método se llamará cuando crees un cable
+    public void OnCableCreated()
+    {
+        // El cable utiliza el color "currentColor" que ya ha sido sincronizado
+        // Aquí puedes aplicar el color "currentColor" al cable
+
+        // Después de crear el cable, generamos el color para el siguiente cable
+        GenerateAndSyncColor();
+    }
+
+    private void GenerateAndSyncColor()
+    {
+        string randomData = GenerateRandom(); // Genera un nuevo índice para el siguiente color
+        Execute(randomData); // Sincroniza el nuevo color
     }
 }
