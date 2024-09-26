@@ -429,6 +429,7 @@ GameObject:
   - component: {fileID: 2229705599551263088}
   - component: {fileID: 2779153424946773379}
   - component: {fileID: 3218729923475342715}
+  - component: {fileID: 7249997776219709853}
   m_Layer: 0
   m_Name: BinCollider
   m_TagString: Untagged
@@ -485,7 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 3218729923475342715}
+  - {fileID: 7249997776219709853}
   config: {fileID: 2779153424946773379}
   triggerActionType: 1
 --- !u!114 &2779153424946773379
@@ -514,10 +515,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1866dc511974f47a0e2d64bedcd513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: bc29b4e5-71fe-4522-beee-7f058c206560
+--- !u!114 &7249997776219709853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856898705364246832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6d57a1916b2214aaed13c88c8a43f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: a8739c95-8134-4569-81f6-6871bb1c6a37
   textId: 
   startsEnabled: 1
   shouldPersist: 1
+  delay: 0
+  exposedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3218729923475342715}
+        m_TargetAssemblyTypeName: DeleteAction, TestAssemblyDefinition
+        m_MethodName: Delete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4386285352739396182
 GameObject:
   m_ObjectHideFlags: 0
