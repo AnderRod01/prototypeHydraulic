@@ -263,49 +263,51 @@ namespace gameControllerNamespace
         }
         void SetLineColors(GameObject cable)
         {
-            
+            // Accedemos al generador de color sincronizado
+            randomColorGenerator = GameObject.Find("RandomColorGenerator").GetComponent<RandomColorGeneratorBroadcast>();
+
+            // Usamos el color ya generado y sincronizado, sin ejecutar de nuevo
+            randomColor = randomColorGenerator.currentColor;
+
+            // Crear el gradiente
             Gradient gradient = new Gradient();
 
             GradientColorKey[] colorKey = new GradientColorKey[4];
             GradientAlphaKey[] alphaKey = new GradientAlphaKey[2];
 
             // First 10% is black
-            colorKey[0].color = c1;
+            colorKey[0].color = c1;  // Color inicial
             colorKey[0].time = 0.05f;
-            
-                        
-            randomColorGenerator = GameObject.Find("RandomColorGenerator").GetComponent<RandomColorGeneratorBroadcast>();
-            randomColorGenerator.Execute(string.Empty);
-            //Wait(0.5f);
-            randomColor = randomColorGenerator.generatedColor;
+
+            // Aplicar el color sincronizado (color generado previamente)
             colorKey[1].color = randomColor;
             colorKey[1].time = 0.1f;
             colorKey[2].color = randomColor;
             colorKey[2].time = 0.89f;
 
+            // Último 5% vuelve al color inicial
             colorKey[3].color = c1;
             colorKey[3].time = 0.95f;
 
-            // Alpha is always 1
+            // Alpha siempre es 1
             alphaKey[0].alpha = 1.0f;
             alphaKey[0].time = 0.0f;
             alphaKey[1].alpha = 1.0f;
             alphaKey[1].time = 1.0f;
 
-            
-            
-            
+            // Configurar el gradiente
             gradient.SetKeys(colorKey, alphaKey);
+
+            // Aplicar el color al material del cable
             yourGradientMaterial.SetColor("_ColorB", randomColor);
 
-            //tubeRenderer.material = yourGradientMaterial;
+            // Crear una nueva instancia del material con el gradiente
             Material material = new Material(yourGradientMaterial);
-            
-            cable.GetComponent<TubeRenderer>().material = material;
-            //lineRenderer.colorGradient = gradient;
-            
 
-            
+            // Asignar el material al cable (tubeRenderer u otro componente)
+            cable.GetComponent<TubeRenderer>().material = material;
+
+            randomColorGenerator.Execute(string.Empty);
         }
 
         private IEnumerator Wait(float t)
