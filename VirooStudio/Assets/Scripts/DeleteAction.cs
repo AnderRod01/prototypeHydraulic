@@ -6,25 +6,12 @@ using TMPro;
 using Viroo.Interactions;
 using Virtualware.Networking.Client.SessionManagement;
 
-public class DeleteAction : BroadcastObjectAction
+public class DeleteAction : MonoBehaviour
 {
     
-
-    private ISessionClientsProvider sessionClientsProvider;
-
-    public void Inject(ISessionClientsProvider sessionClientsProvider)
-    {
-        this.sessionClientsProvider = sessionClientsProvider;
-    }
-
-
-    public override void Execute(string data)
+    public void Delete()
     {
         Destroy(gameObject.transform.parent.gameObject);
     }
 
-    protected override void LocalExecuteImplementation(string data)
-    {
-        //throw new System.NotImplementedException();
-    }
 }
